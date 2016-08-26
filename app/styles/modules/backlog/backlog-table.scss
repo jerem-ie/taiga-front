@@ -40,6 +40,11 @@
             flex-basis: 125px;
             flex-grow: 0;
         }
+        .reference {
+            color: $gray-light;
+            flex-basis: 75px;
+            flex-grow: 0;
+        }
     }
     .votes {
         color: $gray;
@@ -83,6 +88,12 @@
             fill: currentColor;
             margin-left: .2rem;
         }
+    }
+    .reference {
+        color: $gray-light;
+        flex-basis: 75px;
+        flex-grow: 0;
+        text-align: right;
     }
     .pop-status {
         @include popover(200px, 0, 65%, '', '');
@@ -179,6 +190,12 @@
             fill: $gray-light;
             height: .7rem;
             width: .7rem;
+        }
+        .reference {
+            color: $gray-light;
+            flex-basis: 75px;
+            flex-grow: 0;
+            text-align: right;
         }
     }
     .gu-transit {
