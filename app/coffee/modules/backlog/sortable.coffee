@@ -23,15 +23,9 @@
 ###
 
 taiga = @.taiga
-
-mixOf = @.taiga.mixOf
-toggleText = @.taiga.toggleText
-scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
-groupBy = @.taiga.groupBy
 
 module = angular.module("taigaBacklog")
-
 
 #############################################################################
 ## Sortable Directive
@@ -42,7 +36,7 @@ deleteElement = (el) ->
     $(el).off()
     $(el).remove()
 
-BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
+BacklogSortableDirective = () ->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions we don't enable the sortable
@@ -129,7 +123,7 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
                 pixels: 30,
                 scrollWhenOutside: true,
                 autoScroll: () ->
-                    return this.down && drake.dragging;
+                    return this.down && drake.dragging
             })
 
             $scope.$on "$destroy", ->
@@ -138,10 +132,4 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm) ->
 
     return {link: link}
 
-module.directive("tgBacklogSortable", [
-    "$tgRepo",
-    "$tgResources",
-    "$rootScope",
-    "$tgConfirm",
-    BacklogSortableDirective
-])
+module.directive("tgBacklogSortable", BacklogSortableDirective)
