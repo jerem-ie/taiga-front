@@ -69,7 +69,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         bindMethods(@)
 
         @scope.sectionName = "Issues"
-        @scope.filters = {}
         @.voting = false
 
         return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix)
@@ -122,11 +121,8 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.generateFilters()
 
     removeCustomFilter: (customFilter) ->
-        console.log "oooo"
         @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix).then (userFilters) =>
-            console.log userFilters[customFilter.id]
             delete userFilters[customFilter.id]
-
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
 
     saveCustomFilter: (name) ->
@@ -188,6 +184,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 it.id = it.name
 
                 return it
+
+            tagsWithAtLeastOneElement = _.filter tags, (tag) ->
+                return tag.count > 0
+
             assignedTo = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
@@ -259,7 +259,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
                     dataType: "tags",
-                    content: tags
+                    content: tags,
+                    hideEmpty: true,
+                    totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
@@ -554,10 +556,6 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             event.stopPropagation()
             target = angular.element(event.currentTarget)
 
-            for filter in $scope.filters.status
-                if filter.id == issue.status
-                    filter.count--
-
             issue.status = target.data("status-id")
             $el.find(".pop-status").popover().close()
             updateIssueStatus($el, issue, $scope.issueStatusById)
@@ -565,12 +563,7 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             $scope.$apply () ->
                 $repo.save(issue).then ->
                     $ctrl.loadIssues()
-
-                for filter in $scope.filters.status
-                    if filter.id == issue.status
-                        filter.count++
-
-                $rootscope.$broadcast("filters:issueupdate", $scope.filters)
+                    $ctrl.generateFilters()
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))

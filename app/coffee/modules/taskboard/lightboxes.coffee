@@ -119,7 +119,10 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $el.find(".title").html(newTask + "  ")
 
             $el.find(".tag-input").val("")
-            lightboxService.open($el)
+            lightboxService.open $el, () ->
+                $scope.createEditTaskOpen = false
+
+            $scope.createEditTaskOpen = true
 
         $scope.$on "taskform:edit", (ctx, task, attachments) ->
             $scope.task = task
@@ -137,7 +140,10 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             $el.find(".title").html(edit + "  ")
 
             $el.find(".tag-input").val("")
-            lightboxService.open($el)
+            lightboxService.open $el, () ->
+                $scope.createEditTaskOpen = false
+
+            $scope.createEditTaskOpen = true
 
 
         submitButton = $el.find(".submit-button")
@@ -165,9 +171,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
                 deleteAttachments(data)
                     .then () => createAttachments(data)
                     .then () =>
-                        currentLoading.finish()
-                        lightboxService.close($el)
-
                         $rs.tasks.getByRef(data.project, data.ref, params).then (task) ->
                             $rootscope.$broadcast(broadcastEvent, task)
 

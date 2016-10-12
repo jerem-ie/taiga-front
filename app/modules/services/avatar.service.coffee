@@ -18,7 +18,7 @@
 ###
 
 class AvatarService
-    constructor: () ->
+    constructor: (@config) ->
         IMAGES = [
             "/#{window._version}/images/user-avatars/user-avatar-01.png"
             "/#{window._version}/images/user-avatars/user-avatar-02.png"
@@ -31,7 +31,7 @@ class AvatarService
             "rgba( 178, 176, 204, 1 )"
             "rgba( 183, 203, 131, 1 )"
             "rgba( 210, 198, 139, 1 )"
-            "rgba( 178, 178, 178, 1 )"
+            "rgba( 214, 161, 212, 1 )"
             "rgba( 247, 154, 154, 1 )"
         ]
 
@@ -71,7 +71,7 @@ class AvatarService
             return {
                 url: photo
             }
-        else if location.host.indexOf('localhost') != -1
+        else if location.host.indexOf('localhost') != -1 || !@config.get("gravatar", true)
             root = location.protocol + '//' + location.host
             logo = @.getDefault(gravatar)
 
@@ -90,4 +90,4 @@ class AvatarService
                 bg: logo.color
             }
 
-angular.module("taigaCommon").service("tgAvatarService", AvatarService)
+angular.module("taigaCommon").service("tgAvatarService", ["$tgConfig", AvatarService])

@@ -160,6 +160,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 it.id = it.name
 
                 return it
+
+            tagsWithAtLeastOneElement = _.filter tags, (tag) ->
+                return tag.count > 0
+
             assignedTo = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
@@ -205,7 +209,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
                     dataType: "tags",
                     content: tags,
-                    hideEmpty: true
+                    hideEmpty: true,
+                    totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
@@ -325,7 +330,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     refreshTagsColors: ->
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
-            @scope.project.tags_colors = tags_colors
+            @scope.project.tags_colors = tags_colors._attrs
 
     loadSprint: ->
         return @rs.sprints.get(@scope.projectId, @scope.sprintId).then (sprint) =>

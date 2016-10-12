@@ -10,6 +10,7 @@ var sharedFilters = require('../shared/filters');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
+
 describe('backlog', function() {
     before(async function() {
         browser.get(browser.params.glob.host + 'project/project-3/backlog');
@@ -142,11 +143,7 @@ describe('backlog', function() {
             editUSLightbox.status(3).click();
 
             // tags
-            editUSLightbox.tags().sendKeys('www');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            editUSLightbox.tags().sendKeys('xxx');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            editUSLightbox.tags();
 
             // description
             editUSLightbox.description().sendKeys('test test test test');
@@ -163,6 +160,7 @@ describe('backlog', function() {
             await editUSLightbox.waitClose();
         });
     });
+
 
     it('edit status inline', async function() {
         await backlogHelper.setUsStatus(0, 1);
@@ -213,7 +211,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it.skip('reorder multiple us', async function() {
+    it('reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();

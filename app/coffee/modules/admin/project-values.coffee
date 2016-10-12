@@ -31,6 +31,8 @@ joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
+getDefaulColorList = @.taiga.getDefaulColorList
+
 
 module = angular.module("taigaAdmin")
 
@@ -179,7 +181,9 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             }
 
         initializeTextTranslations = ->
-            $scope.addNewElementText = $translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
+            $scope.addNewElementText = $translate.instant(
+                "ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD"
+            )
 
         initializeNewValue()
         initializeTextTranslations()
@@ -320,7 +324,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
 
     return {link:link}
 
-module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", "$translate", "$rootScope", ProjectValuesDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                     "$translate", "$rootScope", ProjectValuesDirective])
 
 
 #############################################################################
@@ -331,6 +336,8 @@ ColorSelectionDirective = () ->
     ## Color selection Link
 
     link = ($scope, $el, $attrs, $model) ->
+        $scope.colorList = getDefaulColorList()
+
         $scope.allowEmpty = false
         if $attrs.tgAllowEmpty
             $scope.allowEmpty = true
@@ -369,6 +376,7 @@ ColorSelectionDirective = () ->
             $el.find(".select-color").hide()
 
         $el.on "keyup", "input", (event) ->
+            event.stopPropagation()
             if event.keyCode == 13
                 $scope.$apply ->
                     $model.$modelValue.color = $scope.color
@@ -716,19 +724,18 @@ class ProjectTagsController extends taiga.Controller
 
     loadTags: =>
         return @rs.projects.tagsColors(@scope.projectId).then (tags) =>
-            @scope.projectTagsAll = _.map(tags.getAttrs(), (color, name) =>
-                                            @model.make_model('tag', {name: name, color: color}))
+            @scope.projectTagsAll = _.map tags.getAttrs(), (color, name) =>
+                @model.make_model('tag', {name: name, color: color})
             @.filterAndSortTags()
             @.loading = false
 
     filterAndSortTags: =>
+        @scope.projectTags = _.sortBy @scope.projectTagsAll, (it) -> it.name.toLowerCase()
+
         @scope.projectTags = _.filter(
-            _.sortBy(@scope.projectTagsAll, "name"),
+            @scope.projectTags,
             (tag) => tag.name.indexOf(@scope.tagsFilter.name) != -1
         )
-
-    deleteTag: (tag) =>
-        return @rs.projects.deleteTag(@scope.projectId, tag)
 
     createTag: (tag, color) =>
         return @rs.projects.createTag(@scope.projectId, tag, color)
@@ -736,7 +743,13 @@ class ProjectTagsController extends taiga.Controller
     editTag: (from_tag, to_tag, color) =>
         if from_tag == to_tag
             to_tag = null
+
         return @rs.projects.editTag(@scope.projectId, from_tag, to_tag, color)
+
+    deleteTag: (tag) =>
+        @scope.loadingDelete = true
+        return @rs.projects.deleteTag(@scope.projectId, tag).finally =>
+            @scope.loadingDelete = false
 
     startMixingTags: (tag) =>
         @scope.mixingTags.toTag = tag.name
@@ -752,9 +765,13 @@ class ProjectTagsController extends taiga.Controller
     confirmMixingTags: () =>
         toTag = @scope.mixingTags.toTag
         fromTags = @scope.mixingTags.fromTags
-        @rs.projects.mixTags(@scope.projectId, toTag, fromTags).then =>
-            @.cancelMixingTags()
-            @.loadTags()
+        @scope.loadingMixing = true
+        @rs.projects.mixTags(@scope.projectId, toTag, fromTags)
+            .then =>
+                @.cancelMixingTags()
+                @.loadTags()
+            .finally =>
+                @scope.loadingMixing = false
 
     cancelMixingTags: () =>
         @scope.mixingTags.toTag = null
@@ -817,7 +834,7 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
             if focus
                 $el.find(".new-value input:visible").first().focus()
 
-        saveValue = (target) ->
+        saveValue = (target) =>
             formEl = target.parents("form")
             form = formEl.checksley()
             return if not form.validate()
@@ -826,29 +843,35 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
             originalTag = tag.clone()
             originalTag.revert()
 
+            $scope.loadingEdit = true
             promise = $ctrl.editTag(originalTag.name, tag.name, tag.color)
             promise.then =>
-                $ctrl.loadTags()
-                row = target.parents(".row.table-main")
-                row.addClass("hidden")
-                row.siblings(".visualization").removeClass('hidden')
+                $ctrl.loadTags().then =>
+                    row = target.parents(".row.table-main")
+                    row.addClass("hidden")
+                    $scope.loadingEdit = false
+                    row.siblings(".visualization").removeClass('hidden')
 
             promise.then null, (response) ->
+                $scope.loadingEdit = false
                 form.setErrors(response.data)
 
-        saveNewValue = (target) ->
+        saveNewValue = (target) =>
             formEl = target.parents("form")
             formEl = target
             form = formEl.checksley()
             return if not form.validate()
 
+            $scope.loadingCreate = true
             promise = $ctrl.createTag($scope.newValue.tag, $scope.newValue.color)
             promise.then (data) =>
-                target.addClass("hidden")
-                $ctrl.loadTags()
-                initializeNewValue()
+                $ctrl.loadTags().then =>
+                    $scope.loadingCreate = false
+                    target.addClass("hidden")
+                    initializeNewValue()
 
             promise.then null, (response) ->
+                $scope.loadingCreate = false
                 form.setErrors(response.data)
 
         cancel = (target) ->
