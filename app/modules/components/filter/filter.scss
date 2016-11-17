@@ -1,12 +1,14 @@
 tg-filter {
     background-color: $mass-white;
-    box-shadow: 1px 1px 5px rgbag($primary, .2);
+    box-shadow: 1px 1px 5px rgba($primary, .2);
     display: block;
     left: 0;
     min-height: 100%;
     padding: 1rem 0;
     position: absolute;
     top: 0;
+    transform: translateX(-260px);
+    transition-duration: .5s;
     width: 260px;
     z-index: 1;
     .filters-applied {
@@ -28,18 +30,7 @@ tg-filter {
         right: .7rem;
         top: .7rem;
     }
-    &.ng-hide-add {
-        transform: translateX(0);
-        transition-duration: .5s;
-    }
-    &.ng-hide-add-active {
-        transform: translateX(-260px);
-    }
-    &.ng-hide-remove {
-        transform: translateX(-260px);
-        transition-duration: .5s;
-    }
-    &.ng-hide-remove-active {
+    &.open {
         transform: translateX(0);
     }
 }

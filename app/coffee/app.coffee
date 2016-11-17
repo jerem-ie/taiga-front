@@ -529,7 +529,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                         .search("force_next", search.force_next)
                 else
                     $location.url($navUrls.resolve("login"))
-                        .search("next", nextUrl)
+                        .search({
+                            "unauthorized": true
+                            "next": nextUrl
+                        })
 
             return $q.reject(response)
 
@@ -690,7 +693,7 @@ i18nInit = (lang, $translate) ->
 
 
 init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService,
-        loaderService, navigationBarService, errorHandlingService) ->
+        loaderService, navigationBarService, errorHandlingService, lightboxService) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -736,6 +739,11 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Initialize error handling service when location change start
     $rootscope.$on '$locationChangeStart',  (event) ->
         errorHandlingService.init()
+
+        if lightboxService.getLightboxOpen().length
+            event.preventDefault();
+
+            lightboxService.closeAll()
 
     # On the first page load the loader is painted in `$routeChangeSuccess`
     # because we need to hide the tg-navigation-bar.
@@ -861,5 +869,6 @@ module.run([
     "tgLoader",
     "tgNavigationBarService",
     "tgErrorHandlingService",
+    "lightboxService",
     init
 ])

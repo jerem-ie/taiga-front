@@ -80,12 +80,17 @@ class LightboxService extends taiga.Service
             docEl.off(".lightbox")
             docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
 
+            $el.addClass('close-started') # don't attach animations
+
             @animationFrame.add =>
                 $el.addClass('close')
 
                 $el.one "transitionend", =>
                     $el.removeAttr('style')
-                    $el.removeClass("open").removeClass('close')
+                    $el
+                        .removeClass("open")
+                        .removeClass('close')
+                        .removeClass('close-started')
 
                     if @.onClose
                         @rootScope.$apply(@.onClose)
@@ -96,6 +101,10 @@ class LightboxService extends taiga.Service
                 scope = $el.data("scope")
                 scope.$destroy() if scope
                 $el.remove()
+
+
+    getLightboxOpen: ->
+        return $(".lightbox.open:not(.close-started)")
 
     closeAll: ->
         docEl = angular.element(document)

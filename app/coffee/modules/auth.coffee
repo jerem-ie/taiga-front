@@ -32,10 +32,11 @@ class LoginPage
         'tgCurrentUserService',
         '$location',
         '$tgNavUrls',
-        '$routeParams'
+        '$routeParams',
+        '$tgAuth'
     ]
 
-    constructor: (currentUserService, $location, $navUrls, $routeParams) ->
+    constructor: (currentUserService, $location, $navUrls, $routeParams, $auth) ->
         if currentUserService.isAuthenticated()
             if not $routeParams['force_login']
                 url = $navUrls.resolve("home")
@@ -43,7 +44,11 @@ class LoginPage
                     url = decodeURIComponent($routeParams['next'])
                     $location.search('next', null)
 
-                $location.url(url)
+                if $routeParams['unauthorized']
+                    $auth.clear()
+                    $auth.removeToken()
+                else
+                    $location.url(url)
 
 
 module.controller('LoginPage', LoginPage)
@@ -569,8 +574,10 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
                 $repo.queryOne("users", $auth.getUser().id).then (data) =>
                     $auth.setUser(data)
                     $location.path($navUrls.resolve("home"))
+                    $location.replace()
             else
                 $location.path($navUrls.resolve("login"))
+                $location.replace()
 
             text = $translate.instant("CHANGE_EMAIL_FORM.SUCCESS")
             $confirm.success(text)
