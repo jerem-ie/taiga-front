@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -58,47 +58,33 @@ TagsDirective = ->
 module.directive("tgTags", TagsDirective)
 
 
-ColorizeTagsDirective = ->
-    templates = {
-        backlog: _.template("""
+ColorizeTagsBacklogDirective = ->
+    template = _.template("""
         <% _.each(tags, function(tag) { %>
+            <% if (tag[1] !== null) { %>
             <span class="tag"
-                <% if (tag[1] !== null) { %>
-                    style="border-left: 5px solid <%- tag[1] %>"
-                <% } %>
-                title="<%- tag[0] %>"><%- tag[0] %></span>
+                  style="border-left: 5px solid <%- tag[1] %>"
+                  title="<%- tag[0] %>">
+                  <%- tag[0] %>
+            </span>
+            <% } %>
         <% }) %>
-        """)
-        kanban: _.template("""
         <% _.each(tags, function(tag) { %>
-            <a class="kanban-tag"
-                href=""
-                <% if (tag[1] !== null) { %>
-                    style="border-color: <%- tag[1] %>"
-                <% } %>
-                title="<%- tag[0] %>" />
+            <% if (tag[1] === null) { %>
+            <span class="tag"
+                  title="<%- tag[0] %>">
+                  <%- tag[0] %>
+            </span>
+            <% } %>
         <% }) %>
-        """)
-        taskboard: _.template("""
-        <% _.each(tags, function(tag) { %>
-            <a class="taskboard-tag"
-                href=""
-                <% if (tag[1] !== null) { %>
-                    style="border-color: <%- tag[1] %>"
-                <% } %>
-                title="<%- tag[0] %>" />
-        <% }) %>
-        """)
-    }
+    """)
 
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (tags) ->
-            template = templates[$attrs.tgColorizeTagsType]
-
             html = template({tags: tags})
             $el.html(html)
 
-        $scope.$watch $attrs.tgColorizeTags, (tags) ->
+        $scope.$watch $attrs.tgColorizeBacklogTags, (tags) ->
             render(tags) if tags?
 
         $scope.$on "$destroy", ->
@@ -106,7 +92,7 @@ ColorizeTagsDirective = ->
 
     return {link: link}
 
-module.directive("tgColorizeTags", ColorizeTagsDirective)
+module.directive("tgColorizeBacklogTags", ColorizeTagsBacklogDirective)
 
 
 #############################################################################

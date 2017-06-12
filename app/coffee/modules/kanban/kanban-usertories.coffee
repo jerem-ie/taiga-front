@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -89,7 +89,6 @@ class KanbanUserstoriesService extends taiga.Service
         @.order[it.id] = it.kanban_order for it in @.userstoriesRaw
 
     assignOrders: (order) ->
-        order = _.invert(order)
         @.order = _.assign(@.order, order)
 
         @.refresh()
@@ -117,8 +116,10 @@ class KanbanUserstoriesService extends taiga.Service
             for it in previousWithTheSameOrder
                 setOrders[it.id] = @.order[it.id]
 
-        if !previous
+        if !previous and (!afterDestination or afterDestination.length == 0)
             @.order[us.id] = 0
+        else if !previous and afterDestination and afterDestination.length > 0
+            @.order[us.id] = @.order[afterDestination[0].id] - 1
         else if previous
             @.order[us.id] = @.order[previous.id] + 1
 
@@ -131,6 +132,18 @@ class KanbanUserstoriesService extends taiga.Service
         @.refresh()
 
         return {"us_id": us.id, "order": @.order[us.id], "set_orders": setOrders}
+
+    moveToEnd: (id, statusId) ->
+        us = @.getUsModel(id)
+
+        @.order[us.id] = -1
+
+        us.status = statusId
+        us.kanban_order = @.order[us.id]
+
+        @.refresh()
+
+        return {"us_id": us.id, "order": -1}
 
     replace: (us) ->
         @.usByStatus = @.usByStatus.map (status) ->
@@ -170,9 +183,14 @@ class KanbanUserstoriesService extends taiga.Service
         userstories = @.userstoriesRaw
         userstories = _.map userstories, (usModel) =>
             us = {}
+
+            model = usModel.getAttrs()
+
             us.foldStatusChanged = @.foldStatusChanged[usModel.id]
-            us.model = usModel.getAttrs()
-            us.images = _.filter usModel.attachments, (it) -> return !!it.thumbnail_card_url
+
+            us.model = model
+            us.images = _.filter model.attachments, (it) -> return !!it.thumbnail_card_url
+
             us.id = usModel.id
             us.assigned_to = @.usersById[usModel.assigned_to]
             us.colorized_tags = _.map us.model.tags, (tag) =>

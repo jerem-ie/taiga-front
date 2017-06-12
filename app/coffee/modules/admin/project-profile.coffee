@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -25,6 +25,7 @@
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
+scopeDefer = @.taiga.scopeDefer
 trim = @.taiga.trim
 toString = @.taiga.toString
 joinStr = @.taiga.joinStr
@@ -54,15 +55,17 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$translate",
         "$tgAuth",
         "tgCurrentUserService",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService",
+        "$tgModel"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService) ->
+                  @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService, @projectService, @model) ->
         @scope.project = {}
 
-        promise = @.loadInitialData()
         @scope.projectTags = []
+        promise = @.loadInitialData()
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
@@ -83,32 +86,35 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
+        project = @model.make_model("projects", project)
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
-            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
-            @scope.pointsList = _.sortBy(project.points, "order")
-            @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.issueTypesList = _.sortBy(project.issue_types, "order")
-            @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
-            @scope.prioritiesList = _.sortBy(project.priorities, "order")
-            @scope.severitiesList = _.sortBy(project.severities, "order")
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
+        @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+        @scope.pointsList = _.sortBy(project.points, "order")
+        @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
+        @scope.issueTypesList = _.sortBy(project.issue_types, "order")
+        @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+        @scope.prioritiesList = _.sortBy(project.priorities, "order")
+        @scope.severitiesList = _.sortBy(project.severities, "order")
+
+        scopeDefer @scope, =>
             @scope.$emit('project:loaded', project)
 
-            @scope.projectTags = _.map @scope.project.tags, (it) =>
-                return [it, @scope.project.tags_colors[it]]
+        @scope.projectTags = _.map @scope.project.tags, (it) =>
+            return [it, @scope.project.tags_colors[it]]
 
-            return project
+        return project
 
     loadInitialData: ->
-        return @q.all([
-            @.loadProject(),
-            @tgAuth.refresh()
-        ])
+        @.loadProject()
+
+        return @tgAuth.refresh()
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
@@ -158,9 +164,9 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
                 })
                 $location.path(newUrl)
 
-                $ctrl.loadInitialData()
+                projectService.fetchProject().then () =>
+                    $ctrl.loadInitialData()
 
-                projectService.fetchProject()
                 currentUserService.loadProjects()
 
             promise.then null, (data) ->
