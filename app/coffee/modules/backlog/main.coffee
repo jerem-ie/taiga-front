@@ -109,6 +109,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
                 @scope.$broadcast("showTags", @showTags)
 
+            @showInSprints = true
+            @scope.$broadcast("showInSprints",@showInSprints)
+
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -288,7 +291,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         params.page = @.page
 
-        promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
+        if showInSprints
+          promise = @rs.userstories.listAll(@scope.projectId, params)
+
+        promise = @rs.userstories.listUnassigned(@scope.projectId, params)
 
         return promise.then (result) =>
 
