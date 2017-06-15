@@ -278,7 +278,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.loadUserstories(true, @scope.userstories.length).then () =>
           @.page = page
 
-    loadUserstories: (resetPagination = false, pageSize) ->
+    loadUserstories: (resetPagination = false, pageSize, showInSprints = true) ->
         return null if !@scope.projectId
 
         @.loadingUserstories = true
@@ -293,8 +293,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         if showInSprints
           promise = @rs.userstories.listAll(@scope.projectId, params)
-
-        promise = @rs.userstories.listUnassigned(@scope.projectId, params)
+        else
+          promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
 
         return promise.then (result) =>
 
