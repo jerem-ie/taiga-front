@@ -17,3 +17,7 @@ e2e/screenshots/
 e2e/reports/
 app/modules/compile-modules/
 yarn.lock
+nbproject/private/private.properties
+nbproject/project.properties
+nbproject/private/private.xml
+nbproject/project.xml
