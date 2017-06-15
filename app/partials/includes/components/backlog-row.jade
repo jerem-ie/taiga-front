@@ -1,7 +1,7 @@
 .row.us-item-row(
     ng-repeat="us in userstories | inArray:visibleUserStories:'ref'"
     tg-bind-scope
-    ng-class="{blocked: us.is_blocked}"
+    ng-class="{blocked: us.is_blocked, milstoned: us.milestone}"
     tg-class-permission="{'readonly': '!modify_us'}"
 )
 
@@ -60,7 +60,7 @@
 
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
-        
+
     // an extra row for displaying us numbers
     div.reference(tg-bo-ref="us.ref")
         a.us-ref(href="", title="{{'COMMON.FIELDS.REFERENCE' | translate}}")
