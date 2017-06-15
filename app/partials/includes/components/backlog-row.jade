@@ -17,9 +17,9 @@
         tg-svg(svg-icon="icon-upvote")
         span {{ ::us.total_voters }}
     .user-stories
-        .tags-block(tg-colorize-backlog-tags="us.tags")
+        .tags-block(tg-colorize-backlog-tags="us.tags")                        
         .user-story-name
-            a.clickable(
+          a.clickable(
                 href=""
                 tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
                 tg-nav-get-params="{\"no-milestone\": 1}"
@@ -27,12 +27,14 @@
             )
                 // Disabling ref in backlog title.
                 // span(tg-bo-ref="us.ref")
+                
                 span(ng-bind="us.subject")
                 tg-belong-to-epics(
                     format="pill"
                     ng-if="us.epics"
                     epics="us.epics"
                 )
+                span(ng-bind="us.milestone_slug")
             .us-settings
                 a.e2e-edit.edit-story(
                     href=""
