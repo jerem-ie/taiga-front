@@ -63,12 +63,18 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
             enablePagination: true
         }, true)
 
-    service.listAll = (projectId, filters) ->
+    service.listAll = (projectId, filters, pageSize) ->
         params = {"project": projectId}
         params = _.extend({}, params, filters or {})
         service.storeQueryParams(projectId, params)
 
-        return $repo.queryMany("userstories", params)
+        return $repo.queryMany("userstories", _.extend(params, {
+            page_size: pageSize
+        }), {
+            enablePagination: true
+        }, true)
+
+        # return $repo.queryMany("userstories", params)
 
     service.bulkCreate = (projectId, status, bulk) ->
         data = {
