@@ -38,13 +38,13 @@
         "EXTERNAL_USER": "un utilisateur externe",
         "GENERIC_ERROR": "L'un de nos Oompa Loompas dit {{error}}.",
         "IOCAINE_TEXT": "Ce membre se sent un peu dépassé par cette tâche. Deviendra immunisé contre le poison iocane au fil du temps avec votre aide. Pour l'instant, il peut avoir besoin d'une étreinte.",
-        "CLIENT_REQUIREMENT": "Une exigence client est une nouvelle exigence exprimée par le client, qui n'était pas prévue dans le projet initial, et qu'il est nécessaire d'intégrer",
-        "TEAM_REQUIREMENT": "Une exigence équipe est une exigence exprimée par l'équipe qui doit être rajoutée au projet, sans que cela n'ait d'impact pour le client",
+        "CLIENT_REQUIREMENT": "Une exigence partenaire est une nouvelle exigence exprimée par le partenaire, qui n'était pas prévue dans le projet initial, et qu'il est nécessaire d'intégrer",
+        "TEAM_REQUIREMENT": "Une exigence équipe est une exigence exprimée par l'équipe qui doit être rajoutée au projet, sans que cela n'ait d'impact pour le partenaire",
         "OWNER": "Propriétaire du Projet",
         "CAPSLOCK_WARNING": "Attention ! Vous utilisez des majuscules dans un champ qui est sensible à la casse.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Êtes-vous sûr de vouloir fermer le mode Édition ?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Souvenez-vous que si vous fermez le mode édition sans enregistrer, toutes vos modifications seront perdues",
-        "RELATED_USERSTORIES": "Récits utilisateur liés",
+        "RELATED_USERSTORIES": "Activités  liés",
         "CARD": {
             "ASSIGN_TO": "Affecter à",
             "EDIT": "Modifier la carte"
@@ -116,7 +116,7 @@
             }
         },
         "SEE_USER_PROFILE": "Afficher le profil de {{username}}",
-        "USER_STORY": "Récit utilisateur",
+        "USER_STORY": "Activité",
         "TASK": "Tâche",
         "ISSUE": "Ticket",
         "EPIC": "Épopée",
@@ -147,7 +147,7 @@
             "IS_BLOCKED": "est bloqué",
             "REF": "Réf.",
             "VOTES": "Votes",
-            "SPRINT": "Sprint",
+            "SPRINT": "Période",
             "REFERENCE": "Reference"
         },
         "ROLES": {
@@ -231,19 +231,19 @@
                 "DELETE_EPICS": "Supprimer des épopées"
             },
             "SPRINTS": {
-                "NAME": "Sprints",
-                "VIEW_SPRINTS": "Voir les sprints",
-                "ADD_SPRINTS": "Ajouter des sprints",
-                "MODIFY_SPRINTS": "Modifier des sprints",
-                "DELETE_SPRINTS": "Supprimer des sprints"
+                "NAME": "Période",
+                "VIEW_SPRINTS": "Voir les Périodes",
+                "ADD_SPRINTS": "Ajouter des Périodes",
+                "MODIFY_SPRINTS": "Modifier des Périodes",
+                "DELETE_SPRINTS": "Supprimer des Périodes"
             },
             "USER_STORIES": {
-                "NAME": "Récits utilisateur",
-                "VIEW_USER_STORIES": "Afficher les récits utilisateur",
-                "ADD_USER_STORIES": "Ajouter des récits utilisateur",
-                "MODIFY_USER_STORIES": "Modifier les récits utilisateur",
-                "COMMENT_USER_STORIES": "Commenter les récits utilisateur",
-                "DELETE_USER_STORIES": "Supprimer des récits utilisateur"
+                "NAME": "Activités ",
+                "VIEW_USER_STORIES": "Afficher les Activités",
+                "ADD_USER_STORIES": "Ajouter des Activités",
+                "MODIFY_USER_STORIES": "Modifier les Activités",
+                "COMMENT_USER_STORIES": "Commenter les Activités",
+                "DELETE_USER_STORIES": "Supprimer des activités"
             },
             "TASKS": {
                 "NAME": "Tâches",
@@ -355,9 +355,9 @@
     },
     "HOME": {
         "PAGE_TITLE": "Accueil - Taiga",
-        "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et tickets qui vont sont assignés et surveillés.",
+        "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les activités, tâches et tickets qui vont sont assignés et surveillés.",
         "EMPTY_WORKING_ON": "<strong>Ça fait vide, hein ?</strong>Commencez à utiliser Taiga et vous verrez apparaître ici les récits, tâches et tickets sur lesquels vous travaillez.",
-        "EMPTY_WATCHING": "<strong>Suivez</strong> des récits utilisateur, des tâches, des tickets dans vos projets et soyez prévenu des modifications :)",
+        "EMPTY_WATCHING": "<strong>Suivez</strong> des activités, des tâches, des tickets dans vos projets et soyez prévenu des modifications :)",
         "EMPTY_PROJECT_LIST": "Vous n'avez aucun projet pour l'instant",
         "WORKING_ON_SECTION": "Projets en cours",
         "WATCHING_SECTION": "Suivi",
@@ -375,14 +375,14 @@
         },
         "EMPTY": {
             "TITLE": "Il semble n'y avoir aucune épopée pour l'instant",
-            "EXPLANATION": "Les épopées sont des éléments à un niveau plus élevé qui englobent les récits utilisateurs.<br />Les épopées sont au sommet de la hiérarchie et peuvent être utilisées pour regrouper ensemble des récits utilisateur.",
+            "EXPLANATION": "Les épopées sont des éléments à un niveau plus élevé qui englobent les activités.<br />Les épopées sont au sommet de la hiérarchie et peuvent être utilisées pour regrouper ensemble des activités.",
             "HELP": "En savoir plus sur les épopées"
         },
         "TABLE": {
             "VOTES": "Votes",
             "NAME": "Nom",
             "PROJECT": "Projet",
-            "SPRINT": "Sprint",
+            "SPRINT": "Période",
             "ASSIGNED_TO": "Affecté",
             "STATUS": "Statut",
             "PROGRESS": "Avancement",
@@ -392,7 +392,7 @@
             "TITLE": "Nouvelle épopée",
             "PLACEHOLDER_DESCRIPTION": "Ajoutez une description pour aider les autres utilisateurs à mieux comprendre cette épopée.",
             "TEAM_REQUIREMENT": "Exigence équipe",
-            "CLIENT_REQUIREMENT": "Exigence client",
+            "CLIENT_REQUIREMENT": "Exigence partenaire",
             "BLOCKED": "Bloqué",
             "BLOCKED_NOTE_PLACEHOLDER": "Pourquoi cette épopée est-elle bloquée ?",
             "CREATE_EPIC": "Créer une épopée"
@@ -464,9 +464,9 @@
             "TITLE": "Modules",
             "EPICS": "Épopées",
             "EPICS_DESCRIPTION": "Visualiser et gérer les aspects les plus stratégiques de votre projet",
-            "BACKLOG": "Backlog",
-            "BACKLOG_DESCRIPTION": "Gérez votre récits utilisateur pour garder une vue organisée des travaux à venir et priorisés.",
-            "NUMBER_SPRINTS": "Nombre prévu de sprints",
+            "BACKLOG": "Liste",
+            "BACKLOG_DESCRIPTION": "Gérez vos activités pour garder une vue organisée des travaux à venir et priorisés.",
+            "NUMBER_SPRINTS": "Nombre prévu de periodes",
             "NUMBER_SPRINTS_HELP": "0 pour un nombre indéterminé",
             "NUMBER_US_POINTS": "Total prévu de points de récit",
             "NUMBER_US_POINTS_HELP": "0 pour un nombre indéterminé",
@@ -526,7 +526,7 @@
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "rapports d'épopée",
-            "SECTION_TITLE_US": "rapports des récits utilisateur",
+            "SECTION_TITLE_US": "rapports des activités",
             "SECTION_TITLE_TASK": "rapports des tâches",
             "SECTION_TITLE_ISSUE": "Rapports des tickets",
             "DOWNLOAD": "Télécharger au format CSV",
@@ -537,11 +537,11 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Champs personnalisés",
-            "SUBTITLE": "Spécifiez les champs personnalisés de vos récits utilisateur, tâches et tickets",
+            "SUBTITLE": "Spécifiez les champs personnalisés de vos activités, tâches et tickets",
             "EPIC_DESCRIPTION": "Champs personnalisés des épopées",
             "EPIC_ADD": "Ajouter un champ personnalisé dans les épopées",
-            "US_DESCRIPTION": "Champs personnalisés des récits utilisateur",
-            "US_ADD": "Ajouter un champ personnalisé dans les récits utilisateur",
+            "US_DESCRIPTION": "Champs personnalisés des activités",
+            "US_ADD": "Ajouter un champ personnalisé dans les activités",
             "TASK_DESCRIPTION": "Champs personnalisés de tâches",
             "TASK_ADD": "Ajouter un champ personnalisé dans les tâches",
             "ISSUE_DESCRIPTION": "Champs personnalisés des tickets",
@@ -559,8 +559,8 @@
         },
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Points",
-            "SUBTITLE": "Spécifiez les points auxquels vos récits utilisateur pourraient être estimés",
-            "US_TITLE": "Points de récits utilisateur",
+            "SUBTITLE": "Spécifiez les points auxquels vos activités pourraient être estimés",
+            "US_TITLE": "Points de activités",
             "ACTION_ADD": "Ajouter un nouveau point"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -577,9 +577,9 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statuts",
-            "SUBTITLE": "Spécifiez les statuts que vont prendre vos récits utilisateur, tâches et tickets",
-            "EPIC_TITLE": "Statuts d'épopée",
-            "US_TITLE": "Statuts de récit utilisateur",
+            "SUBTITLE": "Spécifiez les statuts que vont prendre vos activités, tâches et tickets",
+            "EPIC_TITLE": "Statuts d'épopées",
+            "US_TITLE": "Statuts d'activités",
             "TASK_TITLE": "Statuts des tâches",
             "ISSUE_TITLE": "Statuts des Tickets"
         },
@@ -602,8 +602,8 @@
         },
         "ROLES": {
             "PAGE_TITLE": "Rôles - {{projectName}}",
-            "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
-            "HELP_ROLE_ENABLED": "Si activé, les membres affectés à ce rôle pourront estimer la valeur du point pour les récits utilisateurs",
+            "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les activités",
+            "HELP_ROLE_ENABLED": "Si activé, les membres affectés à ce rôle pourront estimer la valeur du point pour les activités",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Êtes-vous sûr de vouloir désactiver les estimations de ce rôle ?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si vous désactivez les estimations pour le rôle {{roleName}}  toutes les estimations précédentes faites par ce rôle seront supprimées",
             "COUNT_MEMBERS": "{{ role.members_count }} membres avec ce rôle",
@@ -691,7 +691,7 @@
         },
         "DEFAULT_VALUES": {
             "LABEL_EPIC_STATUS": "Valeur par défaut pour le sélecteur de statut d'épopée",
-            "LABEL_US_STATUS": "Valeur par défaut pour le sélecteur de statut de récit utilisateur",
+            "LABEL_US_STATUS": "Valeur par défaut pour le sélecteur de statut d'activité",
             "LABEL_POINTS": "Valeur par défaut pour la sélection des points",
             "LABEL_TASK_STATUS": "Valeur par défaut pour la sélection du statut des tâches",
             "LABEL_ISSUE_TYPE": "Valeur par défaut pour le sélecteur de type",
@@ -754,7 +754,7 @@
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Modifier le profil",
-            "CLOSED_US": "Récit utilisateur fermé",
+            "CLOSED_US": "Activité fermé",
             "PROJECTS": "Projets",
             "PROJECTS_EMPTY": "{{username}} n'a aucun projet pour l'instant",
             "CONTACTS": "Contacts",
@@ -814,7 +814,7 @@
         "SECTION": {
             "SEARCH": "Rechercher",
             "TIMELINE": "Chronologie",
-            "BACKLOG": "Backlog",
+            "BACKLOG": "Liste",
             "KANBAN": "Kanban",
             "ISSUES": "Tickets",
             "WIKI": "Wiki",
@@ -873,7 +873,7 @@
             "CHOOSE_TEMPLATE": "Quel template correspond le mieux à votre projet ?",
             "TEMPLATE_SCRUM": "Scrum",
             "TEMPLATE_SCRUM_DESC": "Prioriser et résoudre vos tâches sur de court cycles de temps",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum est une méthodologie de développement de logiciels agile, incrémentale et itérative pour la gestion du développement de produits.\n\nLe backlog du produit est ce qui sera finalement livré, organisé dans l'ordre dans lequel il doit être livré. Les besoins sont divisés en fragments manageables et exécutables nommés sprints. Chaque fois que l'équipe initie un nouveau sprint; elle s'engage à livrer un certain nombre de récits utilisateurs du backlog, en fonction de leurs compétences, capacités et ressources. Le projet avance à mesure que le backlog se vide.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum est une méthodologie de développement de logiciels agile, incrémentale et itérative pour la gestion du développement de produits.\n\nLa liste du projet est ce qui sera finalement livré, organisé dans l'ordre dans lequel il doit être livré. Les besoins sont divisés en fragments manageables et exécutables nommés Périodes. Chaque fois que l'équipe initie une nouvelle période; elle s'engage à livrer un certain nombre d'activités de la liste, en fonction de leurs compétences, capacités et ressources. Le projet avance à mesure que la Liste se vide.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Garder un flux de travail constant sur les tâches indépendantes",
             "TEMPLATE_KANBAN_LONGDESC": "La méthodologie Kanban est utilisée pour répartir les éléments d'un projet entre différents états.\n\nUne carte Kamban est similaire à un mémo ou un post-it qui détaille chaque tâche (ou récit) qu'il faut effectuer dans le projet. Le tableau Kanban est utilisé pour déplacer chaque carte d'un état d'avancement à l'autre, d'état en état, facilitant de ce fait l'avancée des tâches.",
@@ -1022,7 +1022,7 @@
         "DELETE_PROJECT": {
             "TITLE": "Supprimer le projet",
             "QUESTION": "Êtes-vous sûr de vouloir supprimer ce projet ?",
-            "SUBTITLE": "Toutes les données du projet (récits utilisateur, tâches, tickets, sprints et pages de wiki) seront perdues ! :-(",
+            "SUBTITLE": "Toutes les données du projet (activités, tâches, tickets, Périodes et pages de wiki) seront perdues ! :-(",
             "CONFIRM": "Oui, je suis sûr"
         },
         "ASSIGNED_TO": {
@@ -1052,13 +1052,13 @@
             "PLACEHOLDER_SEARCH": "Que cherchez-vous ?"
         },
         "ADD_EDIT_SPRINT": {
-            "TITLE": "Nouveau sprint",
-            "PLACEHOLDER_SPRINT_NAME": "nom du sprint",
+            "TITLE": "Nouvelle période",
+            "PLACEHOLDER_SPRINT_NAME": "nom de la période",
             "PLACEHOLDER_SPRINT_START": "Début estimé",
             "PLACEHOLDER_SPRINT_END": "Fin estimée",
-            "ACTION_DELETE_SPRINT": "Voulez-vous supprimer ce sprint ?",
-            "TITLE_ACTION_DELETE_SPRINT": "supprimer le sprint",
-            "LAST_SPRINT_NAME": "le dernier sprint est <strong> {{lastSprint}} ;-) </strong>"
+            "ACTION_DELETE_SPRINT": "Voulez-vous supprimer cette période ?",
+            "TITLE_ACTION_DELETE_SPRINT": "supprimer la période",
+            "LAST_SPRINT_NAME": "la dernière période est <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT_TASK": {
             "TITLE": "Nouvelle tâche",
@@ -1069,13 +1069,13 @@
             "ACTION_EDIT": "Modifier la tâche"
         },
         "CREATE_EDIT_US": {
-            "TITLE": "Nouveau récit utilisateur",
-            "PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre ce récit utilisateur",
-            "NEW_US": "Nouveau récit utilisateur",
-            "EDIT_US": "Modifier le récit utilisateur"
+            "TITLE": "Nouvelle Activité",
+            "PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre cette activité",
+            "NEW_US": "Nouvelle Activité",
+            "EDIT_US": "Modifier l'Activité"
         },
         "DELETE_SPRINT": {
-            "TITLE": "Supprimer le sprint"
+            "TITLE": "Supprimer la période"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
@@ -1110,34 +1110,34 @@
         "PAGE_TITLE": "{{epicSubject}} - Épopée {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Statut : {{epicStatus }}. Description : {{epicDescription}}",
         "SECTION_NAME": "Épopée",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Détacher le récit utilisateur",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Cela va supprimer le lien vers le récit utilisateur \"{{subject}}\"",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Détacher l'activité",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Cela va supprimer le lien vers l'activité \"{{subject}}\"",
         "ERROR_UNLINK_RELATED_USERSTORY": "Nous n'avons pas réussi à supprimer le lien : {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Créer un lien avec",
-        "NEW_USERSTORY": "Nouveau récit utilisateur",
-        "EXISTING_USERSTORY": "Récit utilisateur existant",
+        "NEW_USERSTORY": "Nouvelle activité",
+        "EXISTING_USERSTORY": "activité existante",
         "CHOOSE_PROJECT_FOR_CREATION": "Quel est le projet ?",
         "SUBJECT": "Objet",
         "SUBJECT_BULK_MODE": "Sujet (ajout en masse)",
         "CHOOSE_PROJECT_FROM": "Quel est le projet ?",
-        "CHOOSE_USERSTORY": "Quel est le récit utilisateur ?",
-        "NO_USERSTORIES": "Ce projet n'a pas encore de récits utilisateur. Merci de choisir un autre projet.",
-        "FILTER_USERSTORIES": "Filtrer les récits utilisateur",
+        "CHOOSE_USERSTORY": "Quel est l'activité ?",
+        "NO_USERSTORIES": "Ce projet n'a pas encore d'activités. Merci de choisir un autre projet.",
+        "FILTER_USERSTORIES": "Filtrer les activités",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Bloquer l'épopée",
         "ACTION_DELETE": "Supprimer l'épopée"
     },
     "US": {
-        "PAGE_TITLE": "{{userStorySubject}} - Récit utilisateur {{userStoryRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{userStorySubject}} - activité {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Statut : {{userStoryStatus }}. Achevé {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} sur {{userStoryTotalTasks}} tâches fermées). Points : {{userStoryPoints}}. Description : {{userStoryDescription}}",
-        "SECTION_NAME": "Récit utilisateur",
+        "SECTION_NAME": "activité",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "TOTAL_POINTS": "total des points",
-        "ADD": "+ Créer un récit utilisateur",
-        "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
-        "PROMOTED": "Ce récit utilisateur a été promue à partir d'un ticket :",
+        "ADD": "+ Créer une activité",
+        "ADD_BULK": "Ajouter de nouvelles activités en lot",
+        "PROMOTED": "Cette activité a été promue à partir d'un ticket :",
         "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce ticket",
-        "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
+        "TITLE_DELETE_ACTION": "Supprimer l'activité",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
         "NOT_ESTIMATED": "Non estimé",
         "OWNER_US": "This User Story belongs to",
@@ -1154,7 +1154,7 @@
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Exigence équipe",
-            "CLIENT_REQUIREMENT": "Exigence client"
+            "CLIENT_REQUIREMENT": "Exigence partenaire"
         }
     },
     "COMMENTS": {
@@ -1188,7 +1188,7 @@
         "BECAME_DEPRECATED": "devenu obsolète",
         "BECAME_UNDEPRECATED": "n'est plus obsolète",
         "TEAM_REQUIREMENT": "Exigence équipe",
-        "CLIENT_REQUIREMENT": "Exigence client",
+        "CLIENT_REQUIREMENT": "Exigence partenaire",
         "BLOCKED": "Bloqué",
         "VALUES": {
             "UNASSIGNED": "non affecté"
@@ -1199,40 +1199,40 @@
             "STATUS": "statut",
             "TYPE": "type",
             "ASSIGNED_TO": "affecté à",
-            "MILESTONE": "sprint",
+            "MILESTONE": "période",
             "COLOR": "couleur"
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "Backlog - {{projectName}}",
-        "PAGE_DESCRIPTION": "Le panneau backlog avec les récits utilisateurs et sprints du projet {{projectName}} : {{projectDescription}}",
-        "SECTION_NAME": "Backlog",
-        "CUSTOMIZE_GRAPH": "Personnalisez votre backlog",
-        "CUSTOMIZE_GRAPH_TEXT": "Pour obtenir un graphique agréable qui vous aide à suivre l'évolution du projet vous devez définir les points et les sprints via",
+        "PAGE_TITLE": "Liste - {{projectName}}",
+        "PAGE_DESCRIPTION": "La Liste des Activités et Périodes du projet {{projectName}} : {{projectDescription}}",
+        "SECTION_NAME": "Liste",
+        "CUSTOMIZE_GRAPH": "Personnalisez votre Liste",
+        "CUSTOMIZE_GRAPH_TEXT": "Pour obtenir un graphique agréable qui vous aide à suivre l'évolution du projet vous devez définir les points et les Périodes via",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
-        "CUSTOMIZE_GRAPH_TITLE": "Définissez les points et les sprints via l'admin",
-        "MOVE_US_TO_CURRENT_SPRINT": "Déplacer vers le sprint actuel",
-        "MOVE_US_TO_LATEST_SPRINT": "Déplacer vers le dernier sprint",
-        "EMPTY": "Le backlog est vide !",
-        "CREATE_NEW_US": "Créer un nouveau récit utilisateur",
-        "CREATE_NEW_US_EMPTY_HELP": "Vous pouvez envisager de créer un récit utilisateur",
+        "CUSTOMIZE_GRAPH_TITLE": "Définissez les points et les Périodes via l'admin",
+        "MOVE_US_TO_CURRENT_SPRINT": "Déplacer vers la période actuelle",
+        "MOVE_US_TO_LATEST_SPRINT": "Déplacer vers la dernière période",
+        "EMPTY": "La Liste est vide !",
+        "CREATE_NEW_US": "Créer un nouvelle activité",
+        "CREATE_NEW_US_EMPTY_HELP": "Vous pouvez envisager de créer une activité",
         "EXCESS_OF_POINTS": "Excès de points",
         "PENDING_POINTS": "Points restants",
         "CLOSED_POINTS": "fermé",
-        "COMPACT_SPRINT": "Sprint Compact",
+        "COMPACT_SPRINT": "Période Compact",
         "GO_TO_TASKBOARD": "Aller au tableau des tâches de {{::name}}",
-        "EDIT_SPRINT": "Modifier le Sprint",
+        "EDIT_SPRINT": "Modifier la Période",
         "TOTAL_POINTS": "total",
         "STATUS_NAME": "Nom du statut",
-        "SORTABLE_FILTER_ERROR": "Vous ne pouvez pas déposer sur le backlog quand les filtres sont ouverts",
+        "SORTABLE_FILTER_ERROR": "Vous ne pouvez pas déposer dans la liste quand les filtres sont ouverts",
         "DOOMLINE": "Périmètre projet",
         "CHART": {
-            "XAXIS_LABEL": "Sprints",
+            "XAXIS_LABEL": "Périodes",
             "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Le nombre optimal de points pour le sprint \"{{sprintName}}\" devrait être {{value}}",
-            "REAL": "Le nombre réel de points pour le sprint \"{{sprintName}}\" est {{value}}",
-            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences équipe pour le sprint  \"{{sprintName}}\" est {{value}}",
-            "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences client pour le sprint \"{{sprintName}}\" est {{value}}"
+            "OPTIMAL": "Le nombre optimal de points pour la période \"{{sprintName}}\" devrait être {{value}}",
+            "REAL": "Le nombre réel de points pour la période \"{{sprintName}}\" est {{value}}",
+            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences équipe pour la période  \"{{sprintName}}\" est {{value}}",
+            "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences partenaire pour la période \"{{sprintName}}\" est {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Afficher/Cacher les mots-clés",
@@ -1241,12 +1241,12 @@
         },
         "FORECASTING": {
             "TITLE": "Prévision de la vitesse",
-            "BACKLOG": "Afficher le carnet de commandes",
-            "NEW_SPRINT": "Récits utilisateur candidats pour votre prochain sprint en fonction de votre vitesse. Cliquez ici pour créer un nouveau sprint.",
-            "CURRENT_SPRINT": "Récits utilisateur candidat pour votre sprint basé sur votre vitesse. Cliquez ici pour ajouter au sprint actuel."
+            "BACKLOG": "Afficher la Liste",
+            "NEW_SPRINT": "Activités candidates pour votre prochaine période en fonction de votre vitesse. Cliquez ici pour créer une nouvelle période.",
+            "CURRENT_SPRINT": "Activités candidates pour votre période basé sur votre vitesse. Cliquez ici pour les ajouter à la période actuelle."
         },
         "TABLE": {
-            "COLUMN_US": "Récits utilisateur",
+            "COLUMN_US": "Activités",
             "TITLE_COLUMN_POINTS": "Sélectionnez la vue par rôle",
             "TITLE_COLUMN_REF": "Ref."
         },
@@ -1264,7 +1264,7 @@
             "PROJECT_POINTS": "projet<br />points",
             "DEFINED_POINTS": "points<br />définis",
             "CLOSED_POINTS": "points<br />fermés",
-            "POINTS_PER_SPRINT": "points /<br />sprint"
+            "POINTS_PER_SPRINT": "points /<br />période"
         },
         "FILTERS": {
             "TOGGLE": "Afficher/Cacher les filtres",
@@ -1272,17 +1272,17 @@
             "SHOW": "Afficher les filtres"
         },
         "SPRINTS": {
-            "TITLE": "SPRINTS",
+            "TITLE": "PERIODES",
             "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "Tableau des tâches",
             "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches de \"{{name}}\"",
-            "EMPTY": "Il n'y a pas encore de sprint",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Ce sprint n'a pas de \"User Stories\"",
-            "WARNING_EMPTY_SPRINT": "Déposez ici les récits depuis votre backlog pour démarrer un nouveau sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Ajouter un sprint",
-            "TEXT_ACTION_NEW_SPRINT": "Vous souhaitez peut être créer un nouveau sprint dans votre projet.",
-            "ACTION_SHOW_CLOSED_SPRINTS": "Afficher les sprints fermés",
-            "ACTION_HIDE_CLOSED_SPRINTS": "Cacher les sprints fermés"
+            "EMPTY": "Il n'y a pas encore de période",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Cette période n'a pas de \"User Stories\"",
+            "WARNING_EMPTY_SPRINT": "Déposez ici les récits depuis votre Liste pour démarrer une nouvelle période",
+            "TITLE_ACTION_NEW_SPRINT": "Ajouter une période",
+            "TEXT_ACTION_NEW_SPRINT": "Vous souhaitez peut être créer une nouvelle période pour votre projet.",
+            "ACTION_SHOW_CLOSED_SPRINTS": "Afficher les périodes fermées",
+            "ACTION_HIDE_CLOSED_SPRINTS": "Cacher les périodes fermées"
         }
     },
     "ERROR": {
@@ -1294,8 +1294,8 @@
         "VERSION_ERROR": "Quelqu'un a changé ça auparavant dans Taiga et nos Oompa Loompas ne peuvent appliquer vos modifications. Veuillez recharger la page et appliquer vos modifications de nouveaux (elles seront perdues)."
     },
     "TASKBOARD": {
-        "PAGE_TITLE": "{{sprintName}} - Liste de tâches du sprint - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (du {{startDate}} au {{endDate}}) de {{projectName}}. Achevé {{completedPercentage}}% ({{completedPoints}} sur {{totalPoints}} points). {{openTasks}} tâches ouvertes sur {{totalTasks}}.",
+        "PAGE_TITLE": "{{sprintName}} - Liste de tâches de la période - {{projectName}}",
+        "PAGE_DESCRIPTION": "Période {{sprintName}} (du {{startDate}} au {{endDate}}) de {{projectName}}. Achevée {{completedPercentage}}% ({{completedPoints}} sur {{totalPoints}} points). {{openTasks}} tâches ouvertes sur {{totalTasks}}.",
         "SECTION_NAME": "Tableau des tâches",
         "TITLE_ACTION_ADD": "Ajouter une nouvelle tâche",
         "TITLE_ACTION_ADD_BULK": "Ajouter un nouveau lot de tâches",
@@ -1303,7 +1303,7 @@
         "PLACEHOLDER_CARD_TITLE": "Cela pourrait être une tâche",
         "PLACEHOLDER_CARD_TEXT": "Éclater les récits en tâches pour les suivre séparément",
         "TABLE": {
-            "COLUMN": "Récit utilisateur",
+            "COLUMN": "activité",
             "TITLE_ACTION_FOLD": "Replier la colonne",
             "TITLE_ACTION_UNFOLD": "Déplier la colonne",
             "TITLE_ACTION_FOLD_ROW": "Replier la ligne",
@@ -1328,7 +1328,7 @@
         "PLACEHOLDER_SUBJECT": "Entrez l'objet de la nouvelle tâche",
         "TITLE_SELECT_STATUS": "Nom du statut",
         "OWNER_US": "La tâche appartient à",
-        "TITLE_LINK_GO_OWNER": "Aller au récit utilisateur",
+        "TITLE_LINK_GO_OWNER": "Aller à l'activité",
         "TITLE_DELETE_ACTION": "Supprimer une tâche",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Tâche bloquante",
         "FIELDS": {
@@ -1364,8 +1364,8 @@
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
-        "ACTION_PROMOTE_TO_US": "Promouvoir en récit utilisateur",
-        "PROMOTED": "Le ticket a été promu en récit utilisateur",
+        "ACTION_PROMOTE_TO_US": "Promouvoir en activité",
+        "PROMOTED": "Le ticket a été promu en activité",
         "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Aller à l'origine",
         "ACTION_DELETE": "Supprimer le ticket",
@@ -1376,8 +1376,8 @@
             "TYPE": "Type"
         },
         "CONFIRM_PROMOTE": {
-            "TITLE": "Promouvoir ce ticket en nouveau récit utilisateur",
-            "MESSAGE": "Êtes-vous sure de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
+            "TITLE": "Promouvoir ce ticket en nouvelle activité",
+            "MESSAGE": "Êtes-vous sure de vouloir créer un nouvelle activité à partir de ce ticket ?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1405,23 +1405,23 @@
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
-        "PAGE_DESCRIPTION": "Le panneau kanban avec les récits utilisateurs du {{projectName}} : {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Le kanban affichant les activités du {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Replier la colonne",
         "TITLE_ACTION_UNFOLD": "Déplier la colonne",
-        "TITLE_ACTION_ADD_US": "Ajouter un nouveau récit utilisateur",
+        "TITLE_ACTION_ADD_US": "Ajouter un nouvelle activité",
         "TITLE_ACTION_ADD_BULK": "Ajout en masse",
         "ACTION_SHOW_ARCHIVED": "Montrer les éléments archivés",
         "ACTION_HIDE_ARCHIVED": "Cacher les éléments archivés",
-        "HIDDEN_USER_STORIES": "Les récits utilisateur avec ce statut sont masqués par défaut",
-        "PLACEHOLDER_CARD_TITLE": "Ce sont vos récits utilisateurs",
+        "HIDDEN_USER_STORIES": "Les Activités avec ce statut sont masqués par défaut",
+        "PLACEHOLDER_CARD_TITLE": "Ce sont vos Activités",
         "PLACEHOLDER_CARD_TEXT": "Les récits peuvent avoir des sous-tâches pour séparer les exigences"
     },
     "SEARCH": {
         "PAGE_TITLE": "Chercher - {{projectName}}",
-        "PAGE_DESCRIPTION": "Chercher tout, récits utilisateurs, tickets, tâches ou pages de wiki, dans le projet {{projectName}} : {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Chercher tout, activités, tickets, tâches ou pages de wiki, dans le projet {{projectName}} : {{projectDescription}}",
         "FILTER_EPICS": "Épopées",
-        "FILTER_USER_STORIES": "Récits utilisateur",
+        "FILTER_USER_STORIES": "Activités",
         "FILTER_ISSUES": "Tickets",
         "FILTER_TASKS": "Tâches",
         "FILTER_WIKI": "Pages Wiki",
@@ -1528,41 +1528,41 @@
         "HINT3_TITLE": "Triez vos projets pour mettre en valeur vos projets les plus pertinents.",
         "HINT3_TEXT": "Les 10 projets sont listés dans la barre d'accès direct en haut de la page.",
         "HINT4_TITLE": "Vous avez oublié ce sur quoi vous travaillez ?",
-        "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, tickets et récits utilisateurs dans l'ordre dans lequel vous avez travaillé dessus."
+        "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, tickets et activités dans l'ordre dans lequel vous avez travaillé dessus."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} a déposé une nouvelle pièce jointe dans {{obj_name}}",
-        "US_CREATED": "{{username}} a créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
+        "US_CREATED": "{{username}} a créé une nouvelle activité {{obj_name}} dans {{project_name}}",
         "ISSUE_CREATED": "{{username}} a créé un nouveau ticket {{obj_name}} dans {{project_name}}",
         "TASK_CREATED": "{{username}} a créé une nouvelle Tâche {{obj_name}} dans {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} a créé une nouvelle tâche {{obj_name}} dans le projet  {{project_name}} pour le récit utilisateur {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} a créé une nouvelle tâche {{obj_name}} dans le projet  {{project_name}} pour l'activité {{us_name}}",
         "WIKI_CREATED": "{{username}} a créé une nouvelle page wiki {{obj_name}} dans {{project_name}}",
-        "MILESTONE_CREATED": "{{username}} a créé un nouveau sprint {{obj_name}} dans {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} a créé un nouvelle période {{obj_name}} dans {{project_name}}",
         "EPIC_CREATED": "{{username}} a créé une nouvelle épopée {{obj_name}} dans {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} a lié le récit utilisateur {{related_us_name}} à l'épopée {{epic_name}} dans {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} a lié l'activité {{related_us_name}} à l'épopée {{epic_name}} dans {{project_name}}",
         "NEW_PROJECT": "{{username}} a créé le projet {{project_name}}",
-        "MILESTONE_UPDATED": "{{username}} a mis à jour le sprint {{obj_name}}",
-        "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du récit utilisateur {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le récit utilisateur {{obj_name}}",
+        "MILESTONE_UPDATED": "{{username}} a mis à jour la période {{obj_name}}",
+        "US_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» de l'activité {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour l'activité {{obj_name}}",
         "US_UPDATED_POINTS": "{{username}} a mit à jour les points du rôle '{{role_name}}' de l'US {{obj_name}} à la valeur {{new_value}}",
         "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du ticket {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le ticket {{obj_name}}",
         "TASK_UPDATED": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
-        "TASK_UPDATED_WITH_US": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}} qui appartient au récit utilisateur {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}} appartenant au récit utilisateur {{us_name}}",
+        "TASK_UPDATED_WITH_US": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}} qui appartient à l'activité {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}} appartenant à l'activité {{us_name}}",
         "WIKI_UPDATED": "{{username}} a mis à jour la page wiki {{obj_name}}",
         "EPIC_UPDATED": "{{username}} a mis à jour l'attribut \"{{field_name}}\" de l'épopée {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} a mis à jour l'attribut \"{{field_name}}\" de l'épopée {{obj_name}} en {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} a mis à jour l'attribut \"{{field_name}}\" de l'épopée {{obj_name}} en <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} a commenté le récit utilisateur {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} a commenté l'activité {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} a commenté le ticket {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} a commenté la tâche {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} a ajouté un commentaire dans l'épopée {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} a un nouveau membre",
-        "US_ADDED_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} à {{sprint_name}}",
+        "US_ADDED_MILESTONE": "{{username}} a ajouté l'activité {{obj_name}} à {{sprint_name}}",
         "US_MOVED": "{{username}} a déplacé le RU {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} au carnet",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} a ajouté l'activité {{obj_name}} au carnet",
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
         "NEW_USER": "{{username}} a rejoint Taiga"
@@ -1592,7 +1592,7 @@
             },
             "STEP2": {
                 "TITLE": "Projets en cours",
-                "TEXT": "Ici vous trouverez les récits utilisateur, tâches et tickets sur lesquels vous travaillez."
+                "TEXT": "Ici vous trouverez les activités, tâches et tickets sur lesquels vous travaillez."
             },
             "STEP3": {
                 "TITLE": "Suivi",
@@ -1612,16 +1612,16 @@
                 "TEXT2": "Vous pouvez modifier tous les paramètres d'un projet dans l'administration."
             },
             "STEP2": {
-                "TITLE": "Backlog du produit",
-                "TEXT": "Le backlog est la liste des exigences (récits utilisateur) pour le projet. C'est ici que vous préparerez vos sprints."
+                "TITLE": "Liste des activités",
+                "TEXT": "C'est la Liste des activités ( ou de vos micro-projets ) a entreprendre pour ce projet. C'est ici que vous préparerez les périodes."
             },
             "STEP3": {
-                "TITLE": "Sprints",
-                "TEXT": "Les sprints sont des courtes périodes (généralement 2 semaines) pendant lesquels certaines tâches doivent êtres faites et livrées."
+                "TITLE": "les Périodes",
+                "TEXT": "Les périodes définissent un zone de travail pendant lesquels certaines tâches doivent êtres faites et livrées."
             },
             "STEP4": {
-                "TITLE": "Récits utilisateur",
-                "TEXT": "Ce sont les exigences du projet de niveau élevé. Vous pouvez les ajouter au backlog et les glisser dans le sprint pour lequel elles devront être livrées."
+                "TITLE": "Activités",
+                "TEXT": "Ce sont les activités à mettre en place. Vous pouvez les ajouter a la liste et les glisser dans les périodes pour lequelles elles devront être livrées."
             }
         },
         "KANBAN": {
@@ -1630,12 +1630,12 @@
                 "TEXT": "Configurez les colonnes de statut dont vous aurez besoin pour lier votre workflow à l'administration."
             },
             "STEP2": {
-                "TITLE": "Récits utilisateur & Tâches",
-                "TEXT": "Les récits utilisateur sont les exigences du projet de niveau élevé. Vous pouvez les déplacer dans différentes colonnes."
+                "TITLE": "Activités & Tâches",
+                "TEXT": "Les Activités sont les exigences du projet de niveau élevé. Vous pouvez les déplacer dans différentes colonnes."
             },
             "STEP3": {
-                "TITLE": "Ajout de récits utilisateur",
-                "TEXT1": "Vous pouvez ajouter un seul récit utilisateur (icône ajouter un récit utilisateur) ou plusieurs (icône vrac)",
+                "TITLE": "Ajout d'activités",
+                "TEXT1": "Vous pouvez ajouter un seul'activité (icône ajouter un activité) ou plusieurs (icône vrac)",
                 "TEXT2": "Bonne chance !"
             }
         }
