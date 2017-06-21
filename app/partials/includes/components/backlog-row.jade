@@ -25,7 +25,8 @@
                 tg-nav-get-params="{\"no-milestone\": 1}"
                 title="#{{ us.ref }} {{ us.subject }}"
             )
-                span(tg-bo-ref="us.ref")
+                // Disabling ref in backlog title.
+                // span(tg-bo-ref="us.ref")
                 span(ng-bind="us.subject")
                 tg-belong-to-epics(
                     format="pill"
@@ -59,6 +60,11 @@
 
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
+        
+    // an extra row for displaying us numbers
+    div.reference(tg-bo-ref="us.ref")
+        a.us-ref(href="", title="{{'COMMON.FIELDS.REFERENCE' | translate}}")
+
 
     a.e2e-drag(tg-check-permission="modify_us", href="", title="{{'COMMON.DRAG' | translate}}")
         tg-svg(svg-icon="icon-drag")
