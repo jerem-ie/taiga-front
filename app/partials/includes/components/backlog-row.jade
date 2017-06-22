@@ -29,12 +29,17 @@
                 // span(tg-bo-ref="us.ref")
                 
                 span(ng-bind="us.subject")
+                tg-belong-to-sprints(
+                    format="text"
+                    ng-if="us.milestone"
+                    us="us"
+                )  
                 tg-belong-to-epics(
                     format="pill"
                     ng-if="us.epics"
                     epics="us.epics"
-                )
-                span(ng-bind="us.milestone_slug")
+                )                     
+
             .us-settings
                 a.e2e-edit.edit-story(
                     href=""
