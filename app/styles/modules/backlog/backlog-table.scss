@@ -223,17 +223,17 @@
         }
     }
     .user-story-sprint {
-      align-items: center;
-      display: flex;
-      flex-wrap: nowrap;
-      a {
-          @include font-type(light);
-          display: inline-block;
-          flex: 1;
-      }
-      span {
-          line-height: 1.5;
-      }
+        align-items: center;
+        display: flex;
+        flex-wrap: nowrap;
+        a {
+            @include font-type(light);
+            display: inline-block;
+            flex: 1;
+        }
+        span {
+            line-height: 1.5;
+        }
     }
     .user-story-name {
         align-items: center;
